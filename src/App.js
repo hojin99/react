@@ -1,48 +1,35 @@
 import React, {Component} from 'react'
-import Table from './component/table/Table' // 하위 컴포넌트
+import Home from './pages/Home';
+import Counter from './pages/Counter';
+import Input from './pages/Input';
+import Input2 from './pages/Input2';
+import List from './pages/List';
+import About from './pages/About';
+import {Routes, Route, Link} from "react-router-dom";
 
 // react 컴포넌트는 React.Component를 상속 받아 class로 정의
 class App extends Component {
-    state = { // state 객체를 통해서 데이터 상태 관리
-      characters: [
-        {
-          name: 'Charlie',
-          job: 'Janitor',
-        },
-        {
-          name: 'Mac',
-          job: 'Bouncer',
-        },
-        {
-          name: 'Dee',
-          job: 'Aspring actress',
-        },
-        {
-          name: 'Dennis',
-          job: 'Bartender',
-        },    
-      ],
-    }
-
-    // 내부 함수
-    removeCharacter = (index) => {
-        const {characters} = this.state;
-
-        // 상태를 변경하면 자동으로 다시 렌더링됨
-        this.setState({
-          characters : characters.filter((character, i) => {
-            return i !== index;
-          })
-        });
-    }
 
     render() { // render 함수를 통해서 JSX를 리턴하면 html로 렌더링됨
-        const {characters} = this.state;
-
         return (
-            <div className="container">
-                <Table characterData={characters} removeCharacter={this.removeCharacter} />
-            </div>
+          <div class="app">
+            <nav>
+              <Link to="/">Home</Link> |{" "}
+              <Link to="/counter">Counter</Link> |{" "}
+              <Link to="/input">Input</Link> |{" "}
+              <Link to="/input2">Input2</Link> |{" "}
+              <Link to="/list">List</Link> |{" "}
+              <Link to="/about">About</Link>
+            </nav>
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/counter" element={<Counter />}></Route>
+              <Route path="/input" element={<Input />}></Route>
+              <Route path="/input2" element={<Input2 />}></Route>
+              <Route path="/list" element={<List />}></Route>
+              <Route path="/about" element={<About />}></Route>
+            </Routes>
+          </div>
         );
     }
 }

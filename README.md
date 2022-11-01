@@ -6,6 +6,7 @@ react의 개념에 대해서 간단히 확인해보는 것이 목적인 프로�
 
 * create-react-app을 통해서 프로젝트 생성  
 `npx create-react-app reactjs`  
+`npm init react-app reactjs`  
 
 ## 실행
 npm install을 통해서 의존성 업데이트  
